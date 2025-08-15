@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+  labels:
+    app: vote
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      name: vote
+      labels:
+        app: vote
+    spec:
+      containers:
+      - name: vote
+        image: 126315610445.dkr.ecr.us-east-1.amazonaws.com/test-repo:latest
+      imagePullSecrets:
+        - name: ecr-secret
